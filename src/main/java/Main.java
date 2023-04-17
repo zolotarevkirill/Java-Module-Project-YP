@@ -11,7 +11,7 @@ public class Main {
         int countGuests = 0;
         String nameProduct;
         double priceProduct;
-        List <Product> cart = new ArrayList();
+        List <Product> cart = new ArrayList<>();
 
 
         for (; ;) {
@@ -34,7 +34,7 @@ public class Main {
         System.out.println("Вы ввели "+Calculator.getCountGuest()+" человек.");
 
         for (; ;) {
-            System.out.println("Введите название товара:");
+            System.out.println("Введите название товара или введите 'завершить' для завершения:");
             Scanner scanner = new Scanner(System.in);
             nameProduct = scanner.next();
             if(nameProduct.equalsIgnoreCase("завершить")) {break;}
@@ -44,6 +44,9 @@ public class Main {
                 System.out.println("Введите стоимость товара:");
                 try {
                     priceProduct = sc.nextDouble();
+                    if(priceProduct <= 0){
+                        continue;
+                    }
                     Product product = new Product(nameProduct, priceProduct);
                     cart.add(0, product);
                     break;
